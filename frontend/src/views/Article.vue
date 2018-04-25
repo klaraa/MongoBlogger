@@ -4,7 +4,7 @@
         <v-icon style="float:right;cursor:pointer;" @click="deleteArticle">delete</v-icon>
 
         <h1>{{ article.name }}</h1>
-        <small>{{ article.date }} - {{ article.mail }}</small>
+        <small>{{ beautify(article.date) }} - {{ article.mail }}</small>
 
         <p class="mt-3" style="overflow-wrap: break-word;">{{ article.text }}</p>
 
@@ -16,7 +16,7 @@
                 <v-card-title>
                     <div>
                         <h4>{{ comment.author }}</h4>
-                        <small>{{ comment.date }}</small>
+                        <small>{{ beautify(comment.date) }}</small>
                     </div>
                 </v-card-title>
                 <v-card-text>
@@ -50,6 +50,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import request from "../request";
+import moment from "moment";
 
 @Component
 export default class Article extends Vue {
@@ -79,6 +80,10 @@ export default class Article extends Vue {
       this.$router.push({
           name: "list"
       });
+  }
+
+  public beautify(date: string): string {
+    return moment(date).fromNow();
   }
 
   private async load() {

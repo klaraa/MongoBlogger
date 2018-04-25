@@ -16,7 +16,7 @@
         </v-layout>
       </v-container>
     </v-content>
-    <v-footer app><span class="ml-3">Cooler MongoBlogger fett geil</span></v-footer>
+    <v-footer app><span class="ml-3">Cooler MongoBlogger</span></v-footer>
   </v-app>
 </template>
 

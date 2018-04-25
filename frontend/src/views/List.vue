@@ -4,7 +4,7 @@
       <v-card-title primary-title>
         <div>
           <h3 class="headline mb-0">{{ article.name }}</h3>
-          <small>{{ article.date }} - {{ article.mail }}</small>
+          <small>{{ beautify(article.date) }} - {{ article.mail }}</small>
         </div>
       </v-card-title>
       <v-card-text>
@@ -22,6 +22,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import request from "../request";
+import moment from "moment";
 
 @Component
 export default class List extends Vue {
@@ -30,6 +31,10 @@ export default class List extends Vue {
 
   public navTo(id: string) {
     this.$router.push({ name: "article", params: { id: id } });
+  }
+
+  public beautify(date: string): string {
+    return moment(date).fromNow();
   }
 
   public previewText(s: string) {
