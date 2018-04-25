@@ -2,3 +2,4 @@ Alle Artikel: GET /articles
 Neuer Artikel: POST /articles
 Artikel löschen: DELETE /articles/:id
 Artikeldetails: GET /articles/:id
+Kommentar hinzufügen: POST /articles/:id/comments

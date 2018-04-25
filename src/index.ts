@@ -1,6 +1,7 @@
 import * as express from "express";
 import { MongoClient, Db, ObjectID } from "mongodb";
 import { json } from "body-parser";
+import * as cors from "cors";
 
 const url = "mongodb://localhost:27777";
 const dbName = "blogger";
@@ -8,6 +9,7 @@ let db: Db;
 
 const app = express();
 app.use(json());
+app.use(cors());
 
 app.get("/articles", async (req, res) => {
     const articles = await db.collection("articles")
@@ -19,7 +21,9 @@ app.get("/articles", async (req, res) => {
 });
 
 app.post("/articles", async (req, res) => {
-    const result = await db.collection("articles").insertOne(req.body);
+    const article = req.body;
+    article.date = article.date ? Date.parse(article.date) : new Date();
+    const result = await db.collection("articles").insertOne(article);
     res.send(await db.collection("articles").findOne({ _id: result.insertedId }));
 });
 
@@ -41,14 +45,12 @@ app.get("/articles/:id", async (req, res) => {
 });
 
 app.post("/articles/:id/comments", async (req, res) => {
-    const result = await db.collection("articles").updateOne({
-        _id: ObjectID.createFromHexString(req.params.id)
-    },
-    {
-        $push: {
-            comments: req.body
-        }
-    });
+    const comment = req.body;
+    comment.date = comment.date ? Date.parse(comment.date) : new Date();
+    const result = await db.collection("articles").updateOne(
+        { _id: ObjectID.createFromHexString(req.params.id) },
+        { $push: { comments: req.body } }
+    );
     res.send(await db.collection("articles").findOne({ _id: ObjectID.createFromHexString(req.params.id) }));
 
 });
@@ -59,8 +61,8 @@ app.post("/articles/:id/comments", async (req, res) => {
 
     db = mongoClient.db(dbName);
 
-    app.listen(8080);
+    app.listen(8081);
 
-    console.log("Listening on 8080");
+    console.log("Listening on 8081");
 
 })();
