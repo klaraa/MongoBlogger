@@ -6,7 +6,7 @@
         <h1>{{ article.name }}</h1>
         <small>{{ article.date }} - {{ article.mail }}</small>
 
-        <p class="mt-3">{{ article.text }}</p>
+        <p class="mt-3" style="overflow-wrap: break-word;">{{ article.text }}</p>
 
         <hr>
 
@@ -20,7 +20,7 @@
                     </div>
                 </v-card-title>
                 <v-card-text>
-                    {{ comment.text }}
+                    <span style="overflow-wrap: break-word;">{{ comment.text }}</span>
                 </v-card-text>
             </v-card>
         </div>

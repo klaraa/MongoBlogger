@@ -9,7 +9,11 @@
     </v-toolbar>
     <v-content>
       <v-container fluid>
-        <router-view></router-view>
+        <v-layout justify-center>
+          <v-flex xs12 md6>
+            <router-view></router-view>
+          </v-flex>
+        </v-layout>
       </v-container>
     </v-content>
     <v-footer app><span class="ml-3">Cooler MongoBlogger fett geil</span></v-footer>
