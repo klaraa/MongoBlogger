@@ -8,7 +8,7 @@
 
         <p class="mt-3" style="overflow-wrap: break-word;">{{ article.text }}</p>
 
-        <hr>
+        <hr class="mt-3 mb-3">
 
         <h3 class="mt-2">Comments</h3>
         <div v-if="article.comments && article.comments.length > 0">
@@ -27,7 +27,7 @@
 
         <p v-else>No comments.</p>
 
-        <hr>
+        <hr class="mt-3 mb-3">
 
         <h3 class="mt-2">Write a comment</h3>
         <v-form>

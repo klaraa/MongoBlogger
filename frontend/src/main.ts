@@ -6,6 +6,7 @@ Vue.config.productionTip = false;
 
 import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css";
+import "./styles/page-transition.css";
 Vue.use(Vuetify);
 
 new Vue({

@@ -1,27 +1,34 @@
 <template>
     <div>
+        <v-card>
 
-        <h1>New Article</h1>
+            <v-card-title>
+                <h1>New Article</h1>
+            </v-card-title>
 
-        <v-form>
-            <v-text-field
-                label="Name"
-                v-model="name"
-                required>
-            </v-text-field>
-            <v-text-field
-                label="E-Mail"
-                v-model="mail"
-                required>
-            </v-text-field>
-            <v-text-field
-                label="Text"
-                v-model="text"
-                required>
-            </v-text-field>
-            <v-btn @click="submit">Submit</v-btn>
-        </v-form>
+            <v-card-text>
+                <v-form>
+                    <v-text-field
+                        label="Name"
+                        v-model="name"
+                        required>
+                    </v-text-field>
+                    <v-text-field
+                        label="E-Mail"
+                        v-model="mail"
+                        required>
+                    </v-text-field>
+                    <v-text-field
+                        label="Text"
+                        v-model="text"
+                        multi-line
+                        required>
+                    </v-text-field>
+                    <v-btn @click="submit">Submit</v-btn>
+                </v-form>
+            </v-card-text>
 
+        </v-card>
     </div>
 </template>
 
