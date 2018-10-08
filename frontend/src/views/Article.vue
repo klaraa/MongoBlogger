@@ -3,6 +3,7 @@
 
         <v-icon style="float:right;cursor:pointer;" @click="deleteArticle">delete</v-icon>
 
+
         <h1>{{ article.name }}</h1>
         <small>{{ beautify(article.date) }} - {{ article.mail }}</small>
 
